@@ -45,6 +45,9 @@ public class ElasticApmConfig {
         apmProps.put(APPLICATION_PACKAGES_KEY, applicationPackages);
         apmProps.put(LOG_LEVEL_KEY, logLevel);
 
+        //webflux need this, elastic apm >1.25 set this
+        System.setProperty("elastic.apm.enable_experimental_instrumentations","true");
+
         ElasticApmAttacher.attach(apmProps);
     }
 }
